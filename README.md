@@ -15,3 +15,4 @@ mongoose ( mongoDB Connect)
 express
 cors (Cross-Origin Resource Sharing)
 material (UI)
+bycrpt (pw 암호화)

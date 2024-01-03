@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const port = 5000;
 
-const {Costomer} = require("./models/User");
+const {User} = require("./models/User");
 const bodyParser = require("body-parser");
 
 const config = require('./config/key');
@@ -34,17 +34,16 @@ mongoose
   app.post('/register', async (req, res) => {
 
       // 회원가입 client > server 데이터 저장
-      const customer = new Costomer(req.body);
+      const user = new User(req.body);
 
-      customer.save((err, doc) =>{
-
-          if(err) return res.json({ success: false, err});
-
-          return res.status(200).json({
-            success: true
-          })
-
-      });
+      //mongoDB 메서드, user모델에 저장
+      const result = await user.save().then(()=>{
+        res.status(200).json({
+          success: true
+        })
+      }).catch((err)=>{
+        res.json({ success: false, err })
+      })
 
   })
 
