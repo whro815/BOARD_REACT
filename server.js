@@ -20,10 +20,9 @@ app.use(bodyParser.json());
 
 // MongoDB
 const mongoose = require('mongoose');
-mongoose
-.connect(config.mongoURI, {})
-  .then(() => console.log('MongoDB conected'))
-  .catch((err) => { console.log(err); });
+mongoose.connect(config.mongoURI, {})
+        .then(() => console.log('MongoDB conected'))
+        .catch((err) => { console.log(err); });
 
 
   app.get('/', async (req, res) => {

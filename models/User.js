@@ -34,8 +34,7 @@ const userSchema = mongoose.Schema({
     }
 });
 
-// 몽그스 메소드
-// 1. save 전에 행동
+// save 전에 선 처리
 userSchema.pre('save', function( next ){
     
     var user =this;
