@@ -8,6 +8,7 @@ const port = 5000;
 const userRouter = require("./routes/User");
 
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 // secret info
 const config = require('./config/key');
@@ -20,6 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Application/json
 app.use(bodyParser.json());
+
+app.use(cookieParser());
 
 // MongoDB
 const mongoose = require('mongoose');

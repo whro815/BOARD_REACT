@@ -11,8 +11,10 @@ vscode
 postman
 
 ## 라이브러리/ 프레임워크
-mongoose ( mongoDB Connect)
+mongoose (mongoDB Connect)
 express
 cors (Cross-Origin Resource Sharing)
 material (UI)
 bycrpt (pw 암호화)
+JsonWebToken
+cookie-parser
