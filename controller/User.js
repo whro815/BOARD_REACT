@@ -1,3 +1,4 @@
+// Middle_Ware
 // User model
 const { User } = require("../models/User");
 
@@ -64,3 +65,23 @@ exports.loginPostMid = async (req, res) => {
     })
 
 };
+
+/** Auth controler(MiddleWare) */
+exports.authGetMid = async (req, res) => {
+
+  console.log('==authGetMid==');
+  // 이 스테이지 미들웨어를 통과
+  // auth == true
+  
+  res.status(200).json({
+      _id: req.user._id,
+      isAdmin: req.user.role === 0 ? false : true,
+      isAuth: ture,
+      email: req.user.email,
+      name: req.user.name,
+      lastname: req.user.lastname,
+      role: req.user.role,
+      image: req.user.image
+  })
+
+}
