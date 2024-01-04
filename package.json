@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "scripts": {
         "frontend": "cd frontend && npm start",
-        "server": "nodemon server.js",
+        "server": "nodemon app.js",
         "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run frontend\""
     },
     "dependencies": {
