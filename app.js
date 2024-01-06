@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Application/json
 app.use(bodyParser.json());
 
+// Cookie
 app.use(cookieParser());
 
 // MongoDB

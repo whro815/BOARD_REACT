@@ -4,6 +4,7 @@ const { User } = require("../models/User");
 
 // 회원가입
 exports.registerPostMid = async (req, res) => {
+    console.log('==registerPostMid==');
         // 회원가입 client > server 데이터 저장
         const user = new User(req.body);
     
@@ -20,7 +21,7 @@ exports.registerPostMid = async (req, res) => {
 
 // 로그인
 exports.loginPostMid = async (req, res) => {
-  console.log('모듈 진입');
+  console.log('==loginPostMid==');
   // 요청된 이메일을 DB 에서 있는지 확인
   
   User.findOne({ email : req.body.email })
@@ -83,5 +84,23 @@ exports.authGetMid = async (req, res) => {
       role: req.user.role,
       image: req.user.image
   })
+
+}
+
+// 로그아웃 
+exports.logoutGetMid = async (req, res) => {
+    console.log('===logoutGetMid===');
+
+    console.log('req.user =' + JSON.stringify(req.user));
+    console.log('req.user._Id =' + req.user._id);
+
+    User.findOneAndUpdate({ id: req.user._id },{ token: "" })
+        .then(user=>{
+          return res.status(200).send({
+            success : true
+          });
+    }).catch((err) => {
+          res.json({success : false, err});
+    })
 
 }

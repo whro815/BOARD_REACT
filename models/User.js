@@ -76,6 +76,8 @@ userSchema.methods.comparePassword = function(plainPassword, cb){
     })
 }
 
+// 'methods' = model을 통해서
+// 생성된 인스턴스에 정의되는 메서
 userSchema.methods.generateToken = function(cb) {
 
     var user = this;
@@ -94,24 +96,38 @@ userSchema.methods.generateToken = function(cb) {
    
 }
 
-
-userSchema.static.findByToken = function(token, cb) {
+// 'static' = model에 정의되는 메소드
+userSchema.statics.findByToken = function(token, cb) {
     var user = this;
     
-    // token decode
+    console.log('=== findByToken ===');
+    
+    console.log('token decode =' + token)
+
     jwt.verify(token, 'secretToken', function(err, decode){
 
-        // 유저 아이디를 이용해서 유저를 찾은 후
-        // 클라이언트에서 가져온 토큰과 
+        // 1. 유저 아이디를 이용해서 유저를 찾은 후
+        // 2. 클라이언트에서 가져온 토큰과 
         // DB에 보관된 토큰이 일치하는지 확인
-        user.fundOne({'_id' : decode, "token": token}, function(err, user){
-            if(err) return cb(err);
-            cb(null, user)
+        // findOne (X) => findById
+        console.log('decode='+decode);
+        console.log('token='+token);
+
+        if(err){
+            console.log(`에러가 났습니다\n ${err}`);
+            cb(err);
+        }
+
+        const result = user.findOne({'_id': decode, "token": token })
+        .then((user)=>{
+            console.log('user.findOne = '+ user);
+            cb(err, user);
         })
-        
+
     })
 }
 
 const User = mongoose.model('User', userSchema);
+
 
 module.exports = { User }

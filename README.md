@@ -1,7 +1,7 @@
 ## 참고 영상
-https://www.youtube.com/watch?v=VS603yADapk&list=PLrTFeWWAg1chZ4uUrDm8Q-kFjKt-hVEXE
-https://www.youtube.com/watch?v=D2L_sIvJEu0&list=PLRx0vPvlEmdD1pSqKZiTihy5rplxecNpz&index=3
-https://www.youtube.com/watch?v=RVhOamEWyGs&list=PL9a7QRYt5fqkZC9jc7jntD1WuAogjo_9T&index=7
+> https://www.youtube.com/watch?v=VS603yADapk&list=PLrTFeWWAg1chZ4uUrDm8Q-kFjKt-hVEXE
+> https://www.youtube.com/watch?v=D2L_sIvJEu0&list=PLRx0vPvlEmdD1pSqKZiTihy5rplxecNpz&index=3
+> https://www.youtube.com/watch?v=RVhOamEWyGs&list=PL9a7QRYt5fqkZC9jc7jntD1WuAogjo_9T&index=7
 
 ## 버전
  1. node v16.15.1
