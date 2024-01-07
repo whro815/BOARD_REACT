@@ -1,47 +1,42 @@
 import './App.css';
-import Customer from './components/Customer';
+// import Customer from './components/Customer';
 import { Table, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material';
 import  React,{ Component, useEffect, useState } from 'react';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+} from "react-router-dom"
+// react-router-dom version 6 ÀÌÈÄ
+// Switch º¯°æ => Routes ·Î »ç¿ë
 import axios from "axios";
+import LandingPage from './components/views/LandingPage/LandingPage';
+import LoginPage from './components/views/LoginPage/LoignPage';
+import RegisterPage from './components/views/RegisterPage/RegisterPage';
 
 function App(){
 
-  const [customers , setCustomers] = useState([]);
+  // const [customers , setCustomers] = useState([]);
 
-  useEffect( async () =>{
-    await axios.get('/api')
-    .then((response)=>{
-      console.log(response.data);
-      setCustomers(response.data);
-    })
-  },[])
+  // useEffect( async () =>{
+  //   await axios.get('/api')
+  //   .then((response)=>{
+  //     console.log(response.data);
+  //     setCustomers(response.data);
+  //   })
+  // },[])
 
   return (
-            <Paper>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>ë²ˆí˜¸</TableCell>
-                        <TableCell>ì´ë¦„</TableCell>
-                        <TableCell>ìƒë…„ì›”ì¼</TableCell>
-                        <TableCell>ì„±ë³„</TableCell>
-                        <TableCell>ì§ì—…</TableCell>
-                      </TableRow>                                                             
-                    </TableHead>
-                    <TableBody>
-                    {customers.map( c =>
-                      <Customer
-                                key = {c.id}
-                                id={c.id}
-                                name={c.name}
-                                birthday={c.birthday}
-                                gender={c.gender}
-                                job={c.job}/>
-                      
-                     )}
-                    </TableBody>
-                  </Table>
-                </Paper>
+          <Router>
+              <div>
+                  <Routes>
+                    <Route exact path='/' Component={LandingPage} element={ <LandingPage/> } />
+                    <Route path='/login' Component={LoginPage} element={ <LoginPage/> } />
+                    <Route path='/register' Component={RegisterPage} element={ <RegisterPage/> } />
+                  </Routes>
+              </div>
+          </Router>
   )
 
 }
