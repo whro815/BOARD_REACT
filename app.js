@@ -35,6 +35,11 @@ mongoose.connect(config.mongoURI, {})
 app.get('/', async (req, res) => {
 });
 
+// hello test ( 페이지가 아니라 api 호출...)
+app.get('/hello', async (req, res) => {
+  res.send('안녕');
+});
+
 // User
 app.use('/user', userRouter);
 
