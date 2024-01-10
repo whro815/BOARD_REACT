@@ -6,25 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import 'antd';
 
 import { applyMiddleware, legacy_createStore as createStore } from 'redux';
-// import Provider from 'react-redux';
-// import { useSelector, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise';
 import { thunk } from 'redux-thunk';
-// import Reducer from './_reducers';
+import Reducer from './_reducers';
 
 
-//const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, thunk)(createStore);
-
-// const stroe = createStore(
-//   Reducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// )
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, thunk)(createStore);
 
 ReactDOM.render(
-  // <Provider store={ createStoreWithMiddleware(Reducer)}> 
-  //   <App />
-  // </Provider>
-  <App/>
+  <Provider store={ createStoreWithMiddleware(Reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+  )}> 
+    <App />
+  </Provider>
   , document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function

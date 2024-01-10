@@ -8,8 +8,8 @@ import {
     Route,
     Link
 } from "react-router-dom"
-// react-router-dom version 6 ÀÌÈÄ
-// Switch º¯°æ => Routes ·Î »ç¿ë
+// react-router-dom version 6 ï¿½ï¿½ï¿½ï¿½
+// Switch ï¿½ï¿½ï¿½ï¿½ => Routes ï¿½ï¿½ ï¿½ï¿½ï¿½
 import axios from "axios";
 import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoignPage';
