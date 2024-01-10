@@ -1,6 +1,8 @@
 import React,{ useEffect } from 'react';
 import axios from "axios";
-
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logoutUser } from '../../../_actions/user_action'
 //  const [customers , setCustomers] = useState([]);
 
 //   useEffect( async () =>{
@@ -18,6 +20,22 @@ function LandingPage(){
     //     .then( (res)=>{ console.log(res.data); } )
     // },[])
 
+    let navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+    const onClickHandler = () =>{
+        dispatch(logoutUser())
+        .then(res => {
+          console.log('res.payload.logoutSuccess ='+ res.payload.logoutSuccess)
+            if( res.payload.logoutSuccess ){
+                navigate('/login');
+            } else {
+                alert('logout Error');
+            }
+        })
+    }
+
     return (
         <div style={{
                 display:'flex'
@@ -27,6 +45,9 @@ function LandingPage(){
                 , alignItems:'center'
             }}>
             <h2>시작 페이지</h2>
+            <button onClick={onClickHandler}>
+                로그아웃
+            </button>
         </div>
     )
 }

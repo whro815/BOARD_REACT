@@ -11,10 +11,10 @@ exports.registerPostMid = async (req, res) => {
         //mongoDB 메서드, user모델에 저장
         const result = await user.save().then(()=>{
           res.status(200).json({
-            success: true
+            joinSuccess: true
           })
         }).catch((err)=>{
-          res.json({ success: false, err })
+          res.json({ joinSuccess: false, err })
         })
     
 };
@@ -53,7 +53,7 @@ exports.loginPostMid = async (req, res) => {
                 .status(200)
                 .json({loginSuccess: true, userId: user._id}) 
             }).catch((err)=>{
-              res.json({ success: false, err })
+              res.json({ loginSuccess: false, err })
             })
           
           }) 
@@ -97,10 +97,10 @@ exports.logoutGetMid = async (req, res) => {
     User.findOneAndUpdate({ id: req.user._id },{ token: "" })
         .then(user=>{
           return res.status(200).send({
-            success : true
+            logoutSuccess : true
           });
     }).catch((err) => {
-          res.json({success : false, err});
+          res.json({logoutSuccess : false, err});
     })
 
 }
