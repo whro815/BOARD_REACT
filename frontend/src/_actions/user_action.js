@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {
-    LOGIN_USER, JOIN_USER, LOGOUT_USER
+    LOGIN_USER, JOIN_USER, LOGOUT_USER, AUTH_USER
 } from './types';
 
 export function loginUser(dataToSubmit){
@@ -38,6 +38,19 @@ export function logoutUser(){
 
     return{
         type: "LOGOUT_USER",
+        payload: req
+    }
+}
+
+export function auth(){
+    const req = axios.get('/user/auth')
+                    .then(res =>{
+                         console.log('auth =' + res.data);
+                         return res.data;
+                    });
+
+    return{
+        type: "AUTH_USER",
         payload: req
     }
 }

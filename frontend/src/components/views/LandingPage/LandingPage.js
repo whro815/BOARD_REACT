@@ -2,7 +2,7 @@ import React,{ useEffect } from 'react';
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logoutUser } from '../../../_actions/user_action'
+import { logoutUser } from '../../../_actions/user_action';
 //  const [customers , setCustomers] = useState([]);
 
 //   useEffect( async () =>{

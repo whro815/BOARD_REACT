@@ -14,6 +14,7 @@ import axios from "axios";
 import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoignPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import Auth from './hoc/auth';
 
 function App(){
 
@@ -31,9 +32,9 @@ function App(){
           <Router>
               <div>
                   <Routes>
-                    <Route exact path='/' Component={LandingPage} element={ <LandingPage/> } />
-                    <Route path='/login' Component={LoginPage} element={ <LoginPage/> } />
-                    <Route path='/register' Component={RegisterPage} element={ <RegisterPage/> } />
+                    <Route exact path='/' Component={Auth(LandingPage, null)} element={ <LandingPage/> } />
+                    <Route path='/login' Component={Auth(LoginPage, false)} element={ <LoginPage/> } />
+                    <Route path='/register' Component={Auth(RegisterPage, false)} element={ <RegisterPage/> } />
                   </Routes>
               </div>
           </Router>

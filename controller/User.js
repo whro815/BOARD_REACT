@@ -77,7 +77,7 @@ exports.authGetMid = async (req, res) => {
   res.status(200).json({
       _id: req.user._id,
       isAdmin: req.user.role === 0 ? false : true,
-      isAuth: ture,
+      isAuth: true,
       email: req.user.email,
       name: req.user.name,
       lastname: req.user.lastname,
@@ -94,8 +94,9 @@ exports.logoutGetMid = async (req, res) => {
     console.log('req.user =' + JSON.stringify(req.user));
     console.log('req.user._Id =' + req.user._id);
 
-    User.findOneAndUpdate({ id: req.user._id },{ token: "" })
+    User.findOneAndUpdate({ _id: req.user._id },{ token: "" })
         .then(user=>{
+          console.log('user token =' + user.token);
           return res.status(200).send({
             logoutSuccess : true
           });
